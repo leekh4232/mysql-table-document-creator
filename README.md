@@ -10,3 +10,11 @@ MySQL의 테이블 구조를 조회하여 엑셀로 명세서를 저장해주는
 [itpaper_link]: http://www.itpaper.co.kr/mysql-테이블-명세서-생성-프로그램
 
 ![Alt text](http://www.itpaper.co.kr/wp-content/uploads/2016/06/2b1561e56127e458e66568948d7ff24b.png)
+
+## 사용된 라이브러리
+- https://github.com/virtuald/curvesapi
+- MySQL Connector java : https://dev.mysql.com/downloads/connector/j/3.0.html 
+- MyBatis3 : http://www.mybatis.org/mybatis-3/ko/
+- Apache Log4j2 : https://logging.apache.org/log4j/2.x/
+- Apache POI Library : https://poi.apache.org/
+- Apache XML Beans : https://xmlbeans.apache.org/
