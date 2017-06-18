@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties>
+	  <property name="hostname" value="localhost"/>
+	  <property name="portnumber" value="3306"/>
+	  <property name="database" value="자신의 데이터베이스 이름"/>
+	  <property name="username" value="데이터베이스 접근 계정명"/>
+	  <property name="password" value="데이터베이스 비밀번호"/>
+	</properties>
+
+	<!-- MySQL 접속 정보를 지정한다. -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url" value="jdbc:mysql://${hostname}:${portnumber}/${database}?characterEncoding=UTF8" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 실행할 SQL문을 정의한 Mapper XML의 경로를 지정한다. -->
+	<mappers>
+		<mapper resource="kr/co/itpaper/mysqldocument/dao/mapper/TableMapper.xml" />
+	</mappers>
+</configuration>

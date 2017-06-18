@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 이 XML의 구조대로 구현될 클래스의 이름 -->
+<mapper namespace="TableMapper">
+
+	<!-- Beans 클래스의 객체이름(id)과 클래스이름(type)을 명시한다. -->
+	<resultMap id="tableStruct" type="kr.co.itpaper.mysqldocument.model.TableStruct">
+		<result property="id" column="id" />
+		<result property="fieldName" column="fieldName" />
+		<result property="dataType" column="dataType" />
+		<result property="isNull" column="isNull" />
+		<result property="key" column="key" />
+		<result property="extra" column="extra" />
+		<result property="defaultValue" column="defaultValue" />
+		<result property="comment" column="comment" />
+	</resultMap>
+	
+	<resultMap id="tableName" type="kr.co.itpaper.mysqldocument.model.TableName">
+		<result property="tableName" column="tableName" />
+		<result property="comment" column="comment" />
+	</resultMap>
+	
+	<select id="selectTableStruct" parameterType="java.lang.String" resultMap="tableStruct">
+		SELECT
+			ORDINAL_POSITION AS `id`,
+			COLUMN_NAME AS `fieldName`,
+			COLUMN_TYPE AS `dataType`,
+			if( IS_NULLABLE = 'NO', 'NOT NULL', 'NULL' ) as 'isNull',
+			COLUMN_KEY AS `key`,
+			EXTRA AS `extra`,
+			COLUMN_DEFAULT `defaultValue`,
+			COLUMN_COMMENT AS `comment`
+		FROM
+			INFORMATION_SCHEMA.COLUMNS
+		WHERE
+			TABLE_SCHEMA = '${database}'
+			AND TABLE_NAME = #{tableName}
+		ORDER BY
+			TABLE_NAME, ORDINAL_POSITION
+	</select>
+	
+	<select id="selectTableList" resultMap="tableName">
+		SELECT TABLE_NAME as `tableName`,TABLE_COMMENT as `comment`
+		FROM INFORMATION_SCHEMA.TABLES
+		WHERE TABLE_SCHEMA='${database}'
+		ORDER BY `tableName` ASC;
+	</select>
+</mapper>
+
