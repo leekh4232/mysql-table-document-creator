@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,8 +7,9 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -18,6 +18,8 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import kr.co.itpaper.mysqldocument.dao.MyBatisConnectionFactory;
 import kr.co.itpaper.mysqldocument.model.TableName;
@@ -47,7 +49,7 @@ public class Main {
 		}
 
 		SqlSession sqlSession = MyBatisConnectionFactory.getSqlSession();
-		Logger logger = LogManager.getFormatterLogger(Main.class.getName());
+		Logger logger = LoggerFactory.getLogger(Main.class.getName());
 
 		TableService tableService = new TableServiceImpl(sqlSession, logger);
 
@@ -77,35 +79,36 @@ public class Main {
 
 		// 해더부분셀에 스타일을 주기위한 인스턴스 생성
 		XSSFCellStyle headerStyle = workbook.createCellStyle();
-		headerStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER); // 스타일인스턴스의 속성
-		headerStyle.setFillForegroundColor(new XSSFColor(Color.YELLOW));
-		headerStyle.setFillPattern(XSSFCellStyle.SOLID_FOREGROUND);
-		headerStyle.setBorderRight(XSSFCellStyle.BORDER_THIN); // 테두리 설정
-		headerStyle.setBorderLeft(XSSFCellStyle.BORDER_THIN);
-		headerStyle.setBorderTop(XSSFCellStyle.BORDER_THIN);
-		headerStyle.setBorderBottom(XSSFCellStyle.BORDER_THIN);
+		headerStyle.setAlignment(HorizontalAlignment.CENTER); // 스타일인스턴스의 속성
+		headerStyle.setFillForegroundColor(new XSSFColor(new java.awt.Color(255,255,0)));
+		headerStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+		headerStyle.setBorderRight(BorderStyle.THIN); // 테두리 설정
+		headerStyle.setBorderLeft(BorderStyle.THIN);
+		headerStyle.setBorderTop(BorderStyle.THIN);
+		headerStyle.setBorderBottom(BorderStyle.THIN);
 		XSSFFont font = workbook.createFont(); // 폰트 조정 인스턴스 생성
-		font.setBoldweight((short) 700);
+		font.setBold(true);
 		font.setFontHeightInPoints((short) 16);
 		headerStyle.setFont(font);
 
 		// 가운데 정렬과 얇은 테두리를 위한 스타일 인스턴스 생성
 		XSSFCellStyle cellStyle0 = workbook.createCellStyle();
-		cellStyle0.setAlignment(XSSFCellStyle.ALIGN_CENTER);
-		cellStyle0.setBorderRight(XSSFCellStyle.BORDER_THIN);
-		cellStyle0.setBorderLeft(XSSFCellStyle.BORDER_THIN);
-		cellStyle0.setBorderTop(XSSFCellStyle.BORDER_THIN);
-		cellStyle0.setBorderBottom(XSSFCellStyle.BORDER_THIN);
+		cellStyle0.setAlignment(HorizontalAlignment.CENTER);
+		cellStyle0.setBorderRight(BorderStyle.THIN);
+		cellStyle0.setBorderLeft(BorderStyle.THIN);
+		cellStyle0.setBorderTop(BorderStyle.THIN);
+		cellStyle0.setBorderBottom(BorderStyle.THIN);
 		XSSFFont font0 = workbook.createFont(); // 폰트 조정 인스턴스 생성
 		font0.setFontHeightInPoints((short) 14);
 		cellStyle0.setFont(font0);
 
 		// 얇은 테두리를 위한 스타일 인스턴스 생성
 		XSSFCellStyle cellStyle1 = workbook.createCellStyle();
-		cellStyle1.setBorderRight(XSSFCellStyle.BORDER_THIN);
-		cellStyle1.setBorderLeft(XSSFCellStyle.BORDER_THIN);
-		cellStyle1.setBorderTop(XSSFCellStyle.BORDER_THIN);
-		cellStyle1.setBorderBottom(XSSFCellStyle.BORDER_THIN);
+		cellStyle1.setAlignment(HorizontalAlignment.LEFT);
+        cellStyle1.setBorderRight(BorderStyle.THIN);
+        cellStyle1.setBorderLeft(BorderStyle.THIN);
+        cellStyle1.setBorderTop(BorderStyle.THIN);
+        cellStyle1.setBorderBottom(BorderStyle.THIN);
 		XSSFFont font1 = workbook.createFont(); // 폰트 조정 인스턴스 생성
 		font1.setFontHeightInPoints((short) 14);
 		cellStyle1.setFont(font1);

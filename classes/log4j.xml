@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!-- 이클립스 콘솔에 출력되는 설정 -->
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <!-- 로그의 출력패턴 정의 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}][%-5p] %C{1}.%M(%F:%L) %m%n" />
+        </layout>
+    </appender>
+
+    <!-- Application Loggers -->
+    <!-- study.jsp.model1 패키지 하위의 모든 클래스에서 발생하는 로그를 기록함 프로젝트 상황에 맞게 수정필요. -->
+    <logger name="kr.co.itpaper">
+        <level value="debug" />
+    </logger>
+    
+    <!-- DATABASE 연동 관련 로그 설정 시작 -->
+    <logger name="org.apache.ibatis">
+        <level value="DEBUG" />
+    </logger>
+
+    <logger name="jdbc.sqlonly">
+        <level value="INFO" />
+    </logger>
+
+    <logger name="jdbc.sqltiming">
+        <level value="OFF" />
+    </logger>
+
+    <logger name="jdbc.audit">
+        <level value="OFF" />
+    </logger>
+
+    <logger name="jdbc.resultset">
+        <level value="ERROR" />
+    </logger>
+
+    <logger name="jdbc.resultsettable">
+        <level value="DEBUG" />
+    </logger>
+
+    <logger name="jdbc.connection">
+        <level value="ERROR" />
+    </logger>
+
+    <logger name="log4jdbc.debug">
+        <level value="ERROR" />
+    </logger>
+    <!-- DATABASE 연동 관련 로그 설정 끝 -->
+
+    <!-- Root Logger -->
+    <root>
+        <appender-ref ref="console" />
+    </root>
+
+</log4j:configuration>

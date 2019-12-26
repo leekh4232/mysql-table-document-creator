@@ -3,7 +3,7 @@ package kr.co.itpaper.mysqldocument.service.impl;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 
 import kr.co.itpaper.mysqldocument.model.TableName;
 import kr.co.itpaper.mysqldocument.model.TableStruct;
@@ -37,6 +37,7 @@ public class TableServiceImpl implements TableService {
 		} catch (NullPointerException e) {
 			throw new Exception("조회된 테이블 목록이 없습니다.");
 		} catch (Exception e) {
+		    e.printStackTrace();
 			logger.error(e.getLocalizedMessage());
 			throw new Exception("테이블 목록 조회에 실패했습니다.");
 		}
