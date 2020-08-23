@@ -4,29 +4,47 @@
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-	<properties>
-	  <property name="hostname" value="localhost"/>
-	  <property name="portnumber" value="3306"/>
-	  <property name="database" value="b2"/>
-	  <property name="username" value="root"/>
-	  <property name="password" value="123qwe!@#"/>
-	</properties>
+    <properties>
+        <property
+            name="hostname"
+            value="localhost" />
+        <property
+            name="portnumber"
+            value="3306" />
+        <property
+            name="database"
+            value="clip" />
+        <property
+            name="username"
+            value="root" />
+        <property
+            name="password"
+            value="123qwe!@#" />
+    </properties>
 
-	<!-- MySQL 접속 정보를 지정한다. -->
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC" />
-			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.cj.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://${hostname}:${portnumber}/${database}?characterEncoding=UTF8&amp;serverTimezone=UTC" />
-				<property name="username" value="${username}" />
-				<property name="password" value="${password}" />
-			</dataSource>
-		</environment>
-	</environments>
+    <!-- MySQL 접속 정보를 지정한다. -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="POOLED">
+                <property
+                    name="driver"
+                    value="com.mysql.cj.jdbc.Driver" />
+                <property
+                    name="url"
+                    value="jdbc:mysql://${hostname}:${portnumber}/${database}?characterEncoding=UTF8&amp;serverTimezone=UTC" />
+                <property
+                    name="username"
+                    value="${username}" />
+                <property
+                    name="password"
+                    value="${password}" />
+            </dataSource>
+        </environment>
+    </environments>
 
-	<!-- 실행할 SQL문을 정의한 Mapper XML의 경로를 지정한다. -->
-	<mappers>
-		<mapper resource="kr/co/itpaper/mysqldocument/dao/mapper/TableMapper.xml" />
-	</mappers>
+    <!-- 실행할 SQL문을 정의한 Mapper XML의 경로를 지정한다. -->
+    <mappers>
+        <mapper resource="kr/co/itpaper/mysqldocument/dao/mapper/TableMapper.xml" />
+    </mappers>
 </configuration>
