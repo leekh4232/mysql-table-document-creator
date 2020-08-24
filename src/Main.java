@@ -149,7 +149,7 @@ public class Main {
             cell.setCellStyle(headerStyle);
 
             cell = row.createCell(2);
-            cell.setCellValue(name.getTableName());
+            cell.setCellValue(name.getTableName().trim());
             cell.setCellStyle(cellStyle1);
 
             cell = row.createCell(3);
@@ -170,7 +170,7 @@ public class Main {
             cell.setCellStyle(headerStyle);
 
             cell = row.createCell(2);
-            cell.setCellValue(name.getComment());
+            cell.setCellValue(name.getComment().trim());
             cell.setCellStyle(cellStyle1);
 
             cell = row.createCell(3);
@@ -227,27 +227,27 @@ public class Main {
                 cell.setCellStyle(cellStyle0);
 
                 cell = row.createCell(x++);
-                cell.setCellValue(struct.getFieldName());
+                cell.setCellValue(struct.getFieldName().trim());
                 cell.setCellStyle(cellStyle1);
 
                 cell = row.createCell(x++);
-                cell.setCellValue(struct.getDataType());
+                cell.setCellValue(struct.getDataType().trim());
                 cell.setCellStyle(cellStyle0);
 
                 cell = row.createCell(x++);
-                cell.setCellValue(struct.getIsNull());
+                cell.setCellValue(struct.getIsNull().trim());
                 cell.setCellStyle(cellStyle0);
 
                 cell = row.createCell(x++);
-                cell.setCellValue(struct.getKey());
+                cell.setCellValue(struct.getKey().trim());
                 cell.setCellStyle(cellStyle0);
 
                 cell = row.createCell(x++);
-                cell.setCellValue(struct.getExtra());
+                cell.setCellValue(struct.getExtra().trim());
                 cell.setCellStyle(cellStyle0);
 
                 cell = row.createCell(x++);
-                cell.setCellValue(struct.getComment());
+                cell.setCellValue(struct.getComment().replace("\\n", " ").trim());
                 cell.setCellStyle(cellStyle1);
             }
             

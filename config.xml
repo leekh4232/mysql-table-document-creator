@@ -8,8 +8,8 @@
         <property name="hostname" value="localhost" />
         <property name="portnumber" value="3306" />
         <property name="database" value="데이터베이스이름" />
-        <property name="username" value="사용자계정" />
-        <property name="password" value="계정비밀번호" />
+        <property name="username" value="사용자계정명" />
+        <property name="password" value="계정 비밀번호" />
     </properties>
 
     <!-- MySQL 접속 정보를 지정한다. -->
@@ -17,18 +17,10 @@
         <environment id="development">
             <transactionManager type="JDBC" />
             <dataSource type="POOLED">
-                <property
-                    name="driver"
-                    value="com.mysql.cj.jdbc.Driver" />
-                <property
-                    name="url"
-                    value="jdbc:mysql://${hostname}:${portnumber}/${database}?characterEncoding=UTF8&amp;serverTimezone=UTC" />
-                <property
-                    name="username"
-                    value="${username}" />
-                <property
-                    name="password"
-                    value="${password}" />
+                <property name="driver" value="com.mysql.cj.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://${hostname}:${portnumber}/${database}?characterEncoding=UTF8&amp;serverTimezone=UTC" />
+                <property name="username" value="${username}" />
+                <property name="password" value="${password}" />
             </dataSource>
         </environment>
     </environments>
