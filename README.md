@@ -5,7 +5,21 @@ MySQL의 테이블 구조를 조회하여 엑셀로 명세서를 저장해주는
 - 저작도구: Eclipse
 - 사용언어: JAVA
 
-사용시에는 config.xml 파일의 데이터베이스 접속 정보를 수정하여 사용하시기 바랍니다.
+## 사용방법
+
+이클립스에서 프로젝트를 import한 후, config.xml 파일의 데이터베이스 접속 정보를 수정하고 바로 실행하면 됩니다.
+
+```xml
+    <properties>
+        <property name="hostname" value="localhost" />
+        <property name="portnumber" value="3306" />
+        <property name="database" value="데이터베이스이름" />
+        <property name="username" value="사용자계정" />
+        <property name="password" value="계정비밀번호" />
+    </properties>
+```
+
+## 실행 결과 산출물 예시
 
 ![Alt text](img.png)
 
