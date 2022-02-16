@@ -18,8 +18,6 @@ import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import kr.co.itpaper.mysqldocument.dao.MyBatisConnectionFactory;
 import kr.co.itpaper.mysqldocument.model.TableName;
@@ -50,9 +48,8 @@ public class Main {
         }
 
         SqlSession sqlSession = MyBatisConnectionFactory.getSqlSession();
-        Logger logger = LoggerFactory.getLogger(Main.class.getName());
 
-        TableService tableService = new TableServiceImpl(sqlSession, logger);
+        TableService tableService = new TableServiceImpl(sqlSession);
 
         List<TableName> table = null; // 테이블 목록
 
