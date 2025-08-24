@@ -1,0 +1,26 @@
+{
+  "name": "tabledoc",
+  "version": "1.0.2",
+  "description": "MySQL의 테이블 명세서를 생성할 수 있는 CLI기반 Node 프로그램 입니다.",
+  "main": "app.js",
+  "bin": {
+    "tabledoc": "./app.js"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "이광호(leekh4232@gmail.com)",
+  "license": "MIT",
+  "repository": "https://github.com/leekh4232/mysql-table-document-creator-js.git",
+  "dependencies": {
+    "command-line-args": "^6.0.1",
+    "console-table-printer": "^2.11.1",
+    "dayjs": "^1.11.7",
+    "dotenv": "^16.0.3",
+    "exceljs": "^4.3.0",
+    "minimist": "^1.2.8",
+    "mysql2": "^2.3.3",
+    "shelljs": "^0.8.5"
+  }
+}
